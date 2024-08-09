@@ -53,8 +53,8 @@ const CommentForm = ({ suggestionId, onCommentAdded }) => {
           placeholder="Enter your name"
         />
       </div>
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors duration-300 font-bold flex items-center justify-center"
       >
         <Send className="mr-2 h-5 w-5" />

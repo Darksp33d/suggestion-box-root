@@ -6,8 +6,8 @@ import { MessageSquare, User, Calendar } from 'lucide-react';
 const Suggestion = ({ suggestion }) => (
   <div className="bg-gray-800 rounded-lg transition-all duration-300 overflow-hidden shadow-lg hover:shadow-2xl flex flex-col h-full transform hover:-translate-y-1 hover:scale-102">
     <div className="p-5 flex-grow">
-      <Link 
-        to={`/suggestion/${suggestion.id}`} 
+      <Link
+        to={`/suggestion/${suggestion.id}`}
         className="text-xl font-semibold text-blue-400 hover:text-blue-300 transition-colors duration-300 flex items-start mb-3"
       >
         <MessageSquare className="mr-2 h-5 w-5 flex-shrink-0 mt-1" />

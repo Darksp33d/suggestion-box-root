@@ -9,10 +9,10 @@ class DataMocker {
     this.initMockData();
   }
 
-//initialize mock data
+  //initialize mock data
 
-initMockData() {
-  //constants for mock suggestions with titles and descriptions
+  initMockData() {
+    //constants for mock suggestions with titles and descriptions
     const mockSuggestions = [
       { title: "Make your site faster!", description: "This site sucks, its too slow. Make it faster." },
       { title: "Give me free money", description: "I'm poor. Give me money" },
@@ -74,7 +74,7 @@ export function generateRandomSuggestion() {
 
   ];
 
-//return a new suggestion with a random title and description
+  //return a new suggestion with a random title and description
 
   return dataMocker.addSuggestion({
     title: titles[Math.floor(Math.random() * titles.length)],

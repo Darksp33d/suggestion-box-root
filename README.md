@@ -20,6 +20,7 @@ This is a simple suggestion box web app built with React. It uses mock data and 
 ## High Level Flow
 
 - Main home page displays a grid of cards, with each card being a suggestion. The header contains a toggle for "Home" and "Add".
+- There is a button to generate a random suggestion, which will randomly choose a hardcoded title and description and display it on the main page.
 - Toggling from Home to Add displays the Add Suggestion form, which is a standalone component. This form can be used to add suggestions.
 - Clicking on a Suggestion card opens the Suggestion Info Component, which renders the Comment Form within it. Here, you can view the full description of the suggestion, previous comments, and new (your own) comments, as well as post new comments.
 

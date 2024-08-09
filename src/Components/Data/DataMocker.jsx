@@ -33,7 +33,7 @@ initMockData() {
     });
   }
 
-  //add suggestion with title, description and author
+  //add suggestion with title, description and author, and created date
 
   addSuggestion({ title, description, author }) {
     const newSuggestion = { id: uuidv4(), title, description, author, createdAt: new Date().toISOString() };
@@ -42,7 +42,7 @@ initMockData() {
     return newSuggestion;
   }
 
-  //add comment with suggestion id, author and content
+  //add comment with suggestion id, author and content and created date
 
   addComment(suggestionId, { author, content }) {
     const newComment = { id: uuidv4(), author, content, createdAt: new Date().toISOString() };

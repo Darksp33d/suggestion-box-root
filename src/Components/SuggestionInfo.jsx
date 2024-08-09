@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { dataMocker } from './Data/DataMocker';
 import CommentForm from './CommentForm';
-import { User, MessageSquare, Calendar, MessageCircle, Loader, LoaderCircle } from 'lucide-react';
+import { User, MessageSquare, Calendar, MessageCircle, LoaderCircle } from 'lucide-react';
 
 //component to display a single suggestion and its comments
 

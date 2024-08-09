@@ -14,10 +14,12 @@ function App() {
     setSuggestions(dataMocker.getSuggestions());
   }, []);
 
+  //const to generate a random suggestion and add it to the state
   const RandomSuggestion = () => {
     const newSuggestion = generateRandomSuggestion();
     setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
   };
+  //const to add a new suggestion to the state
   const NewSuggestion = (newSuggestion) => {
     setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
   };

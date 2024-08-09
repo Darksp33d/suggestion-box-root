@@ -51,7 +51,7 @@ This will start the development server. Open [http://localhost:3000](http://loca
 
 ## Future Considerations
 
-If I were to create a feature like this in production and have more time to develop it, there are many different things I would change. Obviously, instead of mocking data and using in memory data structures to store data, I would have an API handling the data retrieval from an SQL database which would be called using Axios. I'd also implement better form validation and data sanitization, as well as user accounts (so you don't have to manually input your name for each comment). I'd also have better error handling within the code and use something like i18n for localization. Redux would also be the next step for me for state management, instead of just using hooks.
+If I were to create a feature like this in production and have more time to develop it, there are many different things I would change. Obviously, instead of mocking data and using in memory data structures to store data, I would have an API handling the data retrieval from an SQL database which would be called using Axios. I'd also implement better form validation and data sanitization, as well as user accounts (so you don't have to manually input your name for each comment). I'd also have better error handling within the code and use something like i18n for localization. Redux would also be the next step for me for state management, instead of just using hooks. Finally, there are some general optimizations I would include if working with real, larger datasets, like memoizing to avoid full page re-renders.
 
 Future features would also include editing comments, deleting/marking closed/in progress for suggestions and comments. Also better styling and animations in general. 
 

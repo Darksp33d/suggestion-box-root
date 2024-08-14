@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getSuggestion, getComments, deleteComment } from './Data/apiData';
 import CommentForm from './CommentForm';
-import { User, MessageSquare, Calendar, MessageCircle, LoaderCircle, Trash2 } from 'lucide-react';
+import { User, MessageSquare, Calendar, LoaderCircle, Trash2, MessageSquareOff, MessageCircle } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 //component to display a single suggestion and its comments, also allows for deleting the suggestion
@@ -143,29 +143,36 @@ const SuggestionInfo = ({ onSuggestionDeleted, suggestions }) => {
         Comments
       </h3>
       <div className="space-y-4 mb-6">
-        {comments.map((comment) => (
-          <div key={comment.id} className="bg-gray-700 p-4 rounded-lg">
-            <div className="flex justify-between items-start">
-              <p className="text-gray-200">{comment.content}</p>
-              <button
-                onClick={() => handleDeleteComment(comment.id)}
-                className="text-red-400 hover:text-red-500 transition-colors duration-300"
-              >
-                <Trash2 className="h-4 w-4" />
-              </button>
+        {comments.length > 0 ? (
+          comments.map((comment) => (
+            <div key={comment.id} className="bg-gray-700 p-4 rounded-lg">
+              <div className="flex justify-between items-start">
+                <p className="text-gray-200">{comment.content}</p>
+                <button
+                  onClick={() => handleDeleteComment(comment.id)}
+                  className="text-red-400 hover:text-red-500 transition-colors duration-300"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="text-sm text-gray-400 mt-2 flex items-center justify-between">
+                <span className="flex items-center">
+                  <User className="mr-1 h-4 w-4" />
+                  By {comment.author}
+                </span>
+                <span className="flex items-center">
+                  <Calendar className="mr-1 h-4 w-4" />
+                  {new Date(comment.createdAt).toLocaleDateString()}
+                </span>
+              </div>
             </div>
-            <div className="text-sm text-gray-400 mt-2 flex items-center justify-between">
-              <span className="flex items-center">
-                <User className="mr-1 h-4 w-4" />
-                By {comment.author}
-              </span>
-              <span className="flex items-center">
-                <Calendar className="mr-1 h-4 w-4" />
-                {new Date(comment.createdAt).toLocaleDateString()}
-              </span>
-            </div>
+          ))
+        ) : (
+          <div className="bg-gray-700 p-4 rounded-lg flex items-center justify-center">
+            <MessageSquareOff className="mr-2 h-5 w-5 text-gray-400" />
+            <p className="text-gray-400">No comments yet. Be the first to comment!</p>
           </div>
-        ))}
+        )}
       </div>
 
       <CommentForm suggestionId={id} onCommentAdded={handleNewComment} />

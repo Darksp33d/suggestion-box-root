@@ -11,10 +11,14 @@ const CommentForm = ({ suggestionId, onCommentAdded }) => {
   //handle submit of the form to add a new comment to the suggestion
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const newComment = await createComment(suggestionId, { content, author });
-    onCommentAdded(newComment);
-    setContent('');
-    setAuthor('');
+    try {
+      const newComment = await createComment(suggestionId, { content, author });
+      onCommentAdded(newComment);
+      setContent('');
+      setAuthor('');
+    } catch (error) {
+      console.error('Failed to add comment:', error);
+    }
   };
 
   return (

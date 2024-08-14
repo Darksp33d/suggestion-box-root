@@ -5,6 +5,8 @@ import { Home, Zap, PlusCircle } from 'lucide-react';
 import SuggestionLister from './Components/SuggestionLister';
 import SuggestionInfo from './Components/SuggestionInfo';
 import CreateSuggestionForm from './Components/CreateSuggestionForm';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [suggestions, setSuggestions] = useState([]);
@@ -20,8 +22,14 @@ function App() {
 
   //function to generate a random suggestion and add it to the state
   const RandomSuggestion = async () => {
-    const newSuggestion = await generateRandomSuggestion();
-    setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
+    try {
+      const newSuggestion = await generateRandomSuggestion();
+      setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
+      toast.success('Random suggestion generated!');
+    } catch (error) {
+      console.error('Failed to generate random suggestion:', error);
+      toast.error('Failed to generate random suggestion');
+    }
   };
   
   //function to add a new suggestion to the state
@@ -112,6 +120,18 @@ function App() {
             </Routes>
           </main>
         </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </div>
     </Router>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createSuggestion  } from './Data/apiData';
 import { MessageSquare, User, Send, AlignLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 //component to create a new suggestion,
@@ -14,12 +15,18 @@ const CreateSuggestionForm = ({ onSuggestionAdded }) => {
   //handle submit of the form to add a new suggestion
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const newSuggestion = await createSuggestion({ title, description, author });
-    onSuggestionAdded(newSuggestion);
-    setTitle('');
-    setDescription('');
-    setAuthor('');
-    navigate('/');
+    try {
+      const newSuggestion = await createSuggestion({ title, description, author });
+      onSuggestionAdded(newSuggestion);
+      setTitle('');
+      setDescription('');
+      setAuthor('');
+      toast.success('Suggestion created!');
+      navigate('/');
+    } catch (error) {
+      console.error('Failed to create suggestion:', error);
+      toast.error('Failed to create suggestion');
+    }
   };
 
   return (

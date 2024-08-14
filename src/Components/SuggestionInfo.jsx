@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getSuggestion, getComments, deleteComment } from './Data/apiData';
 import CommentForm from './CommentForm';
 import { User, MessageSquare, Calendar, MessageCircle, LoaderCircle, Trash2 } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 //component to display a single suggestion and its comments, also allows for deleting the suggestion
 const SuggestionInfo = ({ onSuggestionDeleted, suggestions }) => {
@@ -54,6 +55,7 @@ const SuggestionInfo = ({ onSuggestionDeleted, suggestions }) => {
   //handle adding a new comment to the suggestion by id
   const handleNewComment = (newComment) => {
     setComments(prevComments => [...prevComments, newComment]);
+    toast.success('Comment added!');
   };
 
   //handle deleting a comment by id
@@ -61,8 +63,10 @@ const SuggestionInfo = ({ onSuggestionDeleted, suggestions }) => {
     try {
       await deleteComment(commentId);
       setComments(prevComments => prevComments.filter(comment => comment.id !== commentId));
+      toast.success('Comment deleted!');
     } catch (error) {
       console.error('Failed to delete comment:', error);
+      toast.error('Failed to delete comment.');
     }
   };
 
@@ -70,9 +74,11 @@ const SuggestionInfo = ({ onSuggestionDeleted, suggestions }) => {
   const handleDeleteSuggestion = async () => {
     try {
       await onSuggestionDeleted(suggestion.id);
+      toast.success('Suggestion deleted!');
       navigate('/');
     } catch (error) {
       console.error('Failed to delete suggestion:', error);
+      toast.error('Failed to delete suggestion');
     }
   };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { dataMocker } from './Data/DataMocker';
+import { createSuggestion  } from './Data/apiData';
 import { MessageSquare, User, Send, AlignLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,9 +12,9 @@ const CreateSuggestionForm = ({ onSuggestionAdded }) => {
   const navigate = useNavigate();
 
   //handle submit of the form to add a new suggestion
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const newSuggestion = dataMocker.addSuggestion({ title, description, author });
+    const newSuggestion = await createSuggestion({ title, description, author });
     onSuggestionAdded(newSuggestion);
     setTitle('');
     setDescription('');

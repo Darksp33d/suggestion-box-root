@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { dataMocker } from './Data/DataMocker';
+import { createComment  } from './Data/apiData';
 import { User, Send, MessageCircle } from 'lucide-react';
 
 //commentForm component to add a comment to a suggestion
@@ -9,16 +9,16 @@ const CommentForm = ({ suggestionId, onCommentAdded }) => {
   const [author, setAuthor] = useState('');
 
   //handle submit of the form to add a new comment to the suggestion
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const newComment = dataMocker.addComment(suggestionId, { content, author });
+    const newComment = await createComment(suggestionId, { content, author });
     onCommentAdded(newComment);
     setContent('');
     setAuthor('');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="mt-8 bg-gray-800 p-6 rounded-lg">
       <h4 className="text-2xl font-semibold mb-6 text-blue-400 flex items-center">
         <MessageCircle className="mr-3 h-6 w-6" />
         Add a Comment
